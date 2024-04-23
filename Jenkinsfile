@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'sudo -S docker build -t $DOCKER_HUB_REPO:1.0.0 .'
+                sh 'echo "admin" | sudo -S docker build -t $DOCKER_HUB_REPO:1.0.0 .'
             }
         }
 
