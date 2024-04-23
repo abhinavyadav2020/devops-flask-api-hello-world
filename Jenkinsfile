@@ -10,8 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                 sh 'docker image build -t $DOCKER_HUB_REPO .'
-                // sh 'echo "password" | sudo -S docker build -t $DOCKER_HUB_REPO:1.0.0 .'
+                sh 'echo "password" | sudo -S docker build -t $DOCKER_HUB_REPO:1.0.0 .'
             }
         }
 
