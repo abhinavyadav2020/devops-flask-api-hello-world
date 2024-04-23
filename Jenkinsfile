@@ -10,7 +10,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'sudo su'
+                sh 'sudo groupadd docker'
+                sh 'sudo usermod -aG docker $USER'
+                sh 'newgrp docker'
                 sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
             }
         }
