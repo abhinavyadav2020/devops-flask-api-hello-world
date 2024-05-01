@@ -10,8 +10,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                //'echo "mrabhinav2020" | sudo -S docker build -t $DOCKER_HUB_REPO:1.0.0 .'
-                sh 'docker --help'
                 sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
             }
         }
