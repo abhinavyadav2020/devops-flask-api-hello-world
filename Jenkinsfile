@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         DOCKER_HUB_REPO = "mrabhinav2020/flask_docker_jenkins_hands_on"
+        CONTAINER_NAME = "flask-hello-world-container"
         DOCKERHUB_CREDENTIALS=credentials('dockerhub-credentials')
     }
     
@@ -11,6 +12,15 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'docker stop $CONTAINER_NAME'
+                sh 'docker rm $CONTAINER_NAME'
+                sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO bash'
             }
         }
 
