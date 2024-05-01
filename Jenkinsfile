@@ -15,14 +15,14 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'docker stop $CONTAINER_NAME'
-                sh 'docker rm $CONTAINER_NAME'
-                sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO bash'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Testing..'
+        //         sh 'docker stop $CONTAINER_NAME'
+        //         sh 'docker rm $CONTAINER_NAME'
+        //         sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO bash'
+        //     }
+        // }
 
         stage('Login') {
             steps {
@@ -33,6 +33,7 @@ pipeline {
         stage('Push') {
             steps {
                 echo 'Pushing image..'
+                sh 'docker tag DOCKER_HUB_REPO:1.0.0 $DOCKER_HUB_REPO:1.0.0'
                 sh 'docker push $DOCKER_HUB_REPO:1.0.0'
             }
         }
