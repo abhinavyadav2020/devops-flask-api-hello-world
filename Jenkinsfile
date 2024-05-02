@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    // agent any
+    agent {dockerfile true}
     
     environment {
         DOCKER_HUB_REPO = "mrabhinav2020/flask_docker_jenkins_hands_on"
