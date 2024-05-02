@@ -19,7 +19,7 @@ pipeline {
         //     steps {
         //         echo 'Testing..'
         //         sh 'docker stop $CONTAINER_NAME'
-        //         sh 'docker rm $CONTAINER_NAME'
+        //         sh 'docker rm -f $CONTAINER_NAME'
         //         sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO bash'
         //     }
         // }
