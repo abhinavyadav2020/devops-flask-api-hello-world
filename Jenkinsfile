@@ -13,15 +13,15 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'docker --help'
-                // sh 'sudo usermod -aG docker jenkins'
-                // sh 'sudo systemctl restart jenkins'
-                // sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
+                sh 'sudo usermod -aG docker jenkins'
+                sh 'sudo systemctl restart jenkins'
+                sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
 
-                script {
-                    withDockerRegistry(credentialsId: 'dockerhub-credentials') {
-                        sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
-                    }
-                }
+                // script {
+                //     withDockerRegistry(credentialsId: 'dockerhub-credentials') {
+                //         sh 'docker build -t $DOCKER_HUB_REPO:1.0.0 .'
+                //     }
+                // }
             }
         }
 
